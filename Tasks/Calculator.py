@@ -10,35 +10,42 @@ def Divide(a,b):
     return a / b
 
 def get_input():
-    a = float(input("Enter The First Number : ")).strip()
-    if not isinstance(a, float):#ckeck if the input is a number
-        print("Invalid input. Please enter a number.")
-        return get_input()
+    while(True):
+        a = input("Enter The First Number : ")
+        try:
+            a = float(a)
+            break
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
-    b = float(input("Enter The Second Number : ")).strip()
-    if not isinstance(b, float):
-        print("Invalid input. Please enter a number.")
-        return get_input()
+    while(True):
+        b = input("Enter The Second Number : ")
+        try:
+            b = float(b)
+            break
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+        
 
     return a, b
 def  Calculate():
 
-    option = (int)(input("Enter The Operation Number 1.+ 2.- 3.* 4./ 5.Exit : "))
+    option = input("Enter The Operation Number 1.+ 2.- 3.* 4./ 5.Exit : ")
     match option:
-        case 1:
+        case "1":
             a, b = get_input()
-            b = float(input("Enter The Second Number : "))
             print(Add(a,b))
-        case 2:
+        case "2":
             a, b = get_input()
             print(Subtract(a,b))
-        case 3:
+        case "3":
             a, b = get_input()
             print(Multiply(a,b))
-        case 4:
+        case "4":
             a, b = get_input()
             print(Divide(a,b))
-        case 5:
+        case "5":
             print("Exiting the calculator. Goodbye!")
             exit()
         case _:
