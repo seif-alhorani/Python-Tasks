@@ -76,5 +76,3 @@ u1.borrow_book(b1)
 my_library.display_all_books() 
 u1.return_book(b1) 
 my_library.display_all_books() 
-
-print(b1)
