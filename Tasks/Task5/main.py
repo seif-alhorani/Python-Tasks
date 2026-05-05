@@ -39,14 +39,22 @@ def main():
                 continue
                 
             name = input("Enter product name: ")
-            base_price = float(input("Enter base price: ")) # need to be fixed handle input  
-            
+            try:
+                base_price = float(input("Enter base price: "))
+            except ValueError:
+                print("Error: Invalid price format!")
+                continue
+
             if base_price < 0:
                 print("Error: Price cannot be negative!")
                 continue
                 
             if type_choice == '1':
-                shipping = float(input("Enter shipping cost: "))
+                try:
+                    shipping = float(input("Enter shipping cost: "))
+                except ValueError:
+                    print("Error: Invalid shipping cost format!")
+                    continue
                 if shipping < 0:
                     print("Error: Shipping cost cannot be negative!")
                     continue
@@ -56,14 +64,22 @@ def main():
                 new_product = DigitalProduct(id, name, base_price)
                 
             elif type_choice == '3':
-                discount = float(input("Enter discount percentage (0-100): "))
+                try:
+                    discount = float(input("Enter discount percentage (0-100): "))
+                except ValueError:
+                    print("Error: Invalid discount value format!")
+                    continue
                 if discount < 0 or discount > 100:
                     print("Error: Invalid discount value!")
                     continue
                 new_product = DiscountedProduct(id, name, base_price, discount)
                 
             elif type_choice == '4':
-                duration = int(input("Enter duration in months: "))
+                try:
+                    duration = int(input("Enter duration in months: "))
+                except ValueError:
+                    print("Error: Invalid duration format!")
+                    continue
                 if duration <= 0:
                     print("Error: Invalid duration!")
                     continue
